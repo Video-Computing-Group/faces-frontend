@@ -57,7 +57,7 @@
         <div class="col-md-6 offset-md-3" v-if="comparing" >
           <div class="card data">
             <div class="my-auto card-body text-center">
-              <h1>Data: 100%</h1>
+              <h1>Data: {{ comparisonResult }}%</h1>
             </div>
           </div>
         </div>
@@ -86,77 +86,86 @@
 </template>
 
 <script>
-import swal from 'sweetalert2'
+import swal from 'sweetalert2';
+import axios from 'axios';
 
 export default {
   name: 'HelloWorld',
-  data () {
+  data() {
     return {
       img1: '',
       img2: '',
-      comparing: false
-    }
+      comparing: false,
+      serverUrl: 'http://68e8e401.ngrok.io/api/compare',
+      comparisonResult: '',
+    };
   },
   methods: {
     onFileChange1(e) {
       let files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
+      if (!files.length) return;
       this.createImage(files[0], 1);
     },
     onFileChange2(e) {
       let files = e.target.files || e.dataTransfer.files;
-      if (!files.length)
-        return;
+      if (!files.length) return;
       this.createImage(files[0], 2);
     },
     createImage(file, num) {
       let image = new Image();
       let reader = new FileReader();
 
-      reader.onload = (e) => {
+      reader.onload = e => {
         if (num === 1) {
           this.img1 = e.target.result;
-        }
-        else if (num === 2) {
+        } else if (num === 2) {
           this.img2 = e.target.result;
         }
       };
       reader.readAsDataURL(file);
     },
-    removeImage: function (num) {
+    removeImage: function(num) {
       if (num === 1) {
         this.img1 = '';
-      }
-      else if (num === 2) {
+      } else if (num === 2) {
         this.img2 = '';
       }
     },
     compareImages() {
       if (!this.img1.length || !this.img2.length) {
-        swal(
-          'Error',
-          'You must upload 2 images',
-          'error'
-        )
-      }
-      else {
+        swal('Error', 'You must upload 2 images', 'error');
+      } else {
         this.comparing = true;
-      }
 
+        let dataArray = [];
+        dataArray.push(this.img1);
+        dataArray.push(this.img2);
+
+        let that = this;
+        axios
+          .post(this.serverUrl, dataArray, {
+            crossdomain: true,
+          })
+          .then(function(response) {
+            console.log(response.data);
+            that.comparisonResult = response.data;
+          });
+      }
     },
     reset() {
       this.comparing = false;
       this.img1 = '';
       this.img2 = '';
-    }
-  }
-}
+    },
+  },
+};
 </script>
 
 <style>
-
-html, body, #main, .swal2-shown {
+html,
+body,
+#main,
+.swal2-shown {
   height: 100% !important;
   width: 100%;
   background: #f4f4f4;

@@ -1,10 +1,7 @@
 <template>
   <div id="main">
+    <Nav />
     <div class="row img-container">
-      <div class="col-md-12 d-flex justify-content-center align-items-center">
-        <h1>Faces</h1>
-      </div>
-
       <div class="img-upload row">
         <div class="col-md-6">
           <div class="card">
@@ -17,7 +14,7 @@
               <div v-if="!img1" class="dropbox">
                 <input type="file" :name="img1" @change="onFileChange1" accept="image/*" class="input-file">
                 <p>
-                  Drag your file(s) here to begin<br> or click to browse
+                  Click to upload an image
                 </p>
               </div>
 
@@ -41,7 +38,7 @@
               <div v-if="!img2" class="dropbox">
                 <input type="file" :name="img2" @change="onFileChange2" accept="image/*" class="input-file">
                 <p>
-                  Drag your file(s) here to begin<br> or click to browse
+                  Click to upload an image
                 </p>
               </div>
 
@@ -66,7 +63,7 @@
 
       <button
         type="button"
-        class="btn btn-primary btn-lg btn-block"
+        class="btn btn-primary btn-lg btn-block btn-action"
         @click="compareImages"
         v-if="!comparing"
       >
@@ -75,7 +72,7 @@
 
       <button
         type="button"
-        class="btn btn-warning btn-lg btn-block"
+        class="btn btn-warning btn-lg btn-block btn-action"
         @click="reset"
         v-else
       >
@@ -88,9 +85,13 @@
 <script>
 import swal from 'sweetalert2';
 import axios from 'axios';
+import Nav from './Nav';
 
 export default {
   name: 'HelloWorld',
+  components: {
+    Nav,
+  },
   data() {
     return {
       img1: '',
@@ -162,16 +163,21 @@ export default {
 </script>
 
 <style>
-html,
-body,
-#main,
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+#main {
+  height: 100% !important;
+  width: 100%;
+}
 .swal2-shown {
   height: 100% !important;
   width: 100%;
   background: #f4f4f4;
 }
 .img-container {
-  height: 100%;
+  height: 90%;
   width: 100%;
   margin-left: 0px;
   margin-right: 0px;
@@ -179,15 +185,20 @@ body,
 .img-upload {
   height: 80%;
   width: 100%;
+  display: flex;
+  align-content: center;
 }
 .dropbox {
-  outline: 2px dashed grey; /* the dash box */
-  background: lightcyan;
-  color: dimgray;
+  background: #ffffff1a;
+  color: white;
   height: 100%;
   width: 100%;
   position: relative;
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-items: center;
+  justify-content: center;
 }
 
 .input-file {
@@ -199,16 +210,18 @@ body,
 }
 
 .dropbox:hover {
-  background: lightblue; /* when mouse over to the drop zone, change color */
+  background: #ffffff4d;
 }
 
 .dropbox p {
   font-size: 1.2em;
   text-align: center;
   padding: 50px 0;
+  margin-top: 0;
+  margin-bottom: 0;
 }
 .userImage {
-  width: 100%;
+  width: 50%;
 }
 .btn-remove {
   bottom: 20px;
@@ -221,5 +234,33 @@ body,
 .data-text {
   top: 40%;
   position: relative;
+}
+.card {
+  background-color: #0003;
+  border-radius: 0;
+}
+h1 {
+  color: white;
+}
+.btn-action {
+  position: absolute;
+  bottom: 0;
+  padding: 30px;
+  left: 5%;
+  width: 90%;
+  background: none;
+  border: 3px white solid;
+  border-radius: 0;
+  margin-bottom: 20px;
+  color: white;
+}
+.btn-action:hover {
+  background: white;
+  color: black;
+  border: white 3px solid;
+}
+.card-body {
+  display: flex;
+  justify-content: center;
 }
 </style>

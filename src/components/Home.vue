@@ -1,266 +1,74 @@
 <template>
-  <div id="main">
-    <Nav />
-    <div class="row img-container">
-      <div class="img-upload row">
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <img v-if="img1"
-                :src="img1"
-                class="userImage"
-              />
-
-              <div v-if="!img1" class="dropbox">
-                <input type="file" :name="img1" @change="onFileChange1" accept="image/*" class="input-file">
-                <p>
-                  Click to upload an image
-                </p>
-              </div>
-
-              <button
-                v-if="img1"
-                @click="removeImage(1)"
-                class="btn btn-primary btn-remove"
-              >Remove Image 1</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6">
-          <div class="card">
-            <div class="card-body">
-              <img v-if="img2"
-                :src="img2"
-                class="userImage"
-              />
-
-              <div v-if="!img2" class="dropbox">
-                <input type="file" :name="img2" @change="onFileChange2" accept="image/*" class="input-file">
-                <p>
-                  Click to upload an image
-                </p>
-              </div>
-
-              <button
-                v-if="img2"
-                @click="removeImage(2)"
-                class="btn btn-primary btn-remove"
-              >Remove Image 2</button>
-            </div>
-          </div>
-        </div>
-
-        <div class="col-md-6 offset-md-3" v-if="comparing" >
-          <div class="card data">
-            <div class="my-auto card-body text-center">
-              <h1>Data: {{ comparisonResult }}%</h1>
-            </div>
-          </div>
-        </div>
+  <div id="home">
+    <div class="hero">
+      <div class="hero-child-container">
+        <h1 class="hero-child">FACES 2.0</h1>
+        <h3 class="hero-child">Faces, Art, and Computerized Evaluation Systems</h3>
+        <p class="hero-child">Face recognition evaluation for works of portrait art</p>
       </div>
+    </div>
+    <div class="text-body">
+      <h2>What FACES 2.0 is and what it is for</h2>
+      <p>
+        FACES 2.0 is a face recognition application based on a method of machine learningknown as deep neural networks. Funded by the Kress Foundation, it is designed to automatically test the degree of probability of a shared identification between different works of portrait art--that is, non-photographic portraits that are subject to the subjectivity of artistic interpretation. When used correctly with good images, it positively matches what is known with a given unknown-- something that is unlikely to be accidental-- and yields results that may be considered probable. In this, FACES has the potential to provide previously unnoticeable or unconfirmable information by contributing categories of quantifiable data for researchers to factor into theirown analyses.
+      </p>
+      <p>
+        The use of FACES through the Frick website is limited to academics and curators (this is free of charge). Other researchers may acquire the FACES app.
+      </p>
 
-
-      <button
-        type="button"
-        class="btn btn-primary btn-lg btn-block btn-action"
-        @click="compareImages"
-        v-if="!comparing"
-      >
-        Compare Images
-      </button>
-
-      <button
-        type="button"
-        class="btn btn-warning btn-lg btn-block btn-action"
-        @click="reset"
-        v-else
-      >
-        Compare New Images
-      </button>
+      <h2>READ THIS</h2>
+      <p>
+        This technology does not prove the identity of its subjects, either absolutely (for example,that the image is unquestionably Mary Queen of Scots) or  relatively (for example, that the image unquestionably matches an uncertain type, such as "Shakespeare Type 1" or "Shakespeare Type2").
+      </p>
+      <p>
+        FACES is a pioneering program and so users must not expect completion or perfection any more than with any other new digitally-based technology, all of which typically go through long periods of development.  The application of face recognition technology to works of art will certainly be refined in probably every area, but only in the course of its adoption by the museum and academic communities.
+      </p>
+      <p>
+        Since there was no pre-existing database of processed images of works of portrait art for us to develop our program, we had to make our own, something we did with as much control over variables as possible.  Practically speaking, this meant a database composed of portraits from a historical period marked by its attention to naturalistic representation in general and, in particular, by artists known for such attention.  We found that portraits from Western Europe, fifteenth to early eighteenth century, suited our purposes best.
+      </p>
     </div>
   </div>
 </template>
 
 <script>
-import swal from 'sweetalert2';
-import axios from 'axios';
-import Nav from './Nav';
-
-export default {
-  name: 'HelloWorld',
-  components: {
-    Nav,
-  },
-  data() {
-    return {
-      img1: '',
-      img2: '',
-      comparing: false,
-      serverUrl: 'http://68e8e401.ngrok.io/api/compare',
-      comparisonResult: '',
-    };
-  },
-  methods: {
-    onFileChange1(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0], 1);
-    },
-    onFileChange2(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0], 2);
-    },
-    createImage(file, num) {
-      let image = new Image();
-      let reader = new FileReader();
-
-      reader.onload = e => {
-        if (num === 1) {
-          this.img1 = e.target.result;
-        } else if (num === 2) {
-          this.img2 = e.target.result;
-        }
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function(num) {
-      if (num === 1) {
-        this.img1 = '';
-      } else if (num === 2) {
-        this.img2 = '';
-      }
-    },
-    compareImages() {
-      if (!this.img1.length || !this.img2.length) {
-        swal('Error', 'You must upload 2 images', 'error');
-      } else {
-        this.comparing = true;
-
-        let dataArray = [];
-        dataArray.push(this.img1);
-        dataArray.push(this.img2);
-
-        let that = this;
-        axios
-          .post(this.serverUrl, dataArray, {
-            crossdomain: true,
-          })
-          .then(function(response) {
-            console.log(response.data);
-            that.comparisonResult = response.data;
-          });
-      }
-    },
-    reset() {
-      this.comparing = false;
-      this.img1 = '';
-      this.img2 = '';
-    },
-  },
-};
+export default {}
 </script>
 
-<style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+<style scoped>
+html,
 body {
-  font-family: 'Montserrat', sans-serif;
+    background: white !important;
 }
-#main {
-  height: 100% !important;
-  width: 100%;
+#home {
+    height: 100%;
+    width: 100%;
 }
-.swal2-shown {
-  height: 100% !important;
-  width: 100%;
-  background: #f4f4f4;
+.hero {
+    height: 100%;
+    width: 100%;
+    background: #0009;
+    text-align: center;
+    color: white;
 }
-.img-container {
-  height: 90%;
-  width: 100%;
-  margin-left: 0px;
-  margin-right: 0px;
+.hero-child {
+    width: 100%;
 }
-.img-upload {
-  height: 80%;
-  width: 100%;
-  display: flex;
-  align-content: center;
+.hero-child-container {
+    padding-top: 20%;
 }
-.dropbox {
-  background: #ffffff1a;
-  color: white;
-  height: 100%;
-  width: 100%;
-  position: relative;
-  cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-items: center;
-  justify-content: center;
+.text-body {
+    background: white;
+    padding-left: 20%;
+    padding-right: 20%;
+    padding-top: 10px;
+    padding-bottom: 50px;
+    text-align: center;
 }
-
-.input-file {
-  opacity: 0; /* invisible but it's there! */
-  width: 100%;
-  height: 90%;
-  position: absolute;
-  cursor: pointer;
+.text-body p {
+    text-align: justify;
+    color: #626262;
 }
-
-.dropbox:hover {
-  background: #ffffff4d;
-}
-
-.dropbox p {
-  font-size: 1.2em;
-  text-align: center;
-  padding: 50px 0;
-  margin-top: 0;
-  margin-bottom: 0;
-}
-.userImage {
-  width: 50%;
-}
-.btn-remove {
-  bottom: 20px;
-  position: absolute;
-}
-.row {
-  margin-left: auto;
-  margin-right: auto;
-}
-.data-text {
-  top: 40%;
-  position: relative;
-}
-.card {
-  background-color: #0003;
-  border-radius: 0;
-}
-h1 {
-  color: white;
-}
-.btn-action {
-  position: absolute;
-  bottom: 0;
-  padding: 30px;
-  left: 5%;
-  width: 90%;
-  background: none;
-  border: 3px white solid;
-  border-radius: 0;
-  margin-bottom: 20px;
-  color: white;
-}
-.btn-action:hover {
-  background: white;
-  color: black;
-  border: white 3px solid;
-}
-.card-body {
-  display: flex;
-  justify-content: center;
+.text-body h2 {
+    padding-top: 50px;
 }
 </style>

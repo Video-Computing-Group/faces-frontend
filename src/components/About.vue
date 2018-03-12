@@ -41,10 +41,118 @@
  In this module we first train a classifier network using a augmented dataset created by casting the style of our portraits dataset on an existing dataset. We train this classifier using 20k images across 131 classes. A classifier network is a deep learning module which can classify the face image into one of the classes defined by the user. A class here refers to the face image of a person.
       </p>
       <p>
-        Secondly, we utilize the authentic dataset procured by our team to train a Siamese network to learn the similarity between the pairs of images. As the name suggests, Siamese network is two Convolutional Neural Network (CNN) models running in parallel with the parameters of the classifier we trained in first module. The reason of using the parameters from the trained classifier is to have a initial parameters which best describes the styled transferred dataset resembling art images. Thus, when a Siamese Network is learned, it performs better than classification task. <**need information>. Following our the classifier network which shows how we are extracting features using CNN.
+        Secondly, we utilize the authentic dataset procured by our team to train a Siamese network to learn the similarity between the pairs of images. As the name suggests, Siamese network is two Convolutional Neural Network (CNN) models running in parallel with the parameters of the classifier we trained in first module. The reason of using the parameters from the trained classifier is to have a initial parameters which best describes the styled transferred dataset resembling art images. Thus, when a Siamese Network is learned, it performs better than classification task. Following our the classifier network which shows how we are extracting features using CNN.
       </p>
 
-      <h2>The FACES Teams and Publications</h2>
+    </div>
+    <div id="people-container">
+      <h2>The FACES 1.0 Teams</h2>
+      <div class="row">
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/conrad.jpg" alt="Conrad">
+          <div class="person-text-container">
+            <h2>Conrad Rudolph</h2>
+            <p>Professor, Department of the History of Art</p>
+            <p>Project Director and Principal Investigator</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/amit.jpg" alt="Amit">
+          <div class="person-text-container">
+            <h2>Amit Roy-Chowdhury</h2>
+            <p>Professor, Department of Electrical Engineering, University of California, Riverside</p>
+            <p>Computer vision and image processing expert</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/conrad.jpg" alt="Ramya">
+          <div class="person-text-container">
+            <h2>Ramya Srinivasan</h2>
+            <p>Doctoral Student, Department of Electrical Engineering, University of California, Riverside</p>
+            <p>Computer vision and image processing research</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/conrad.jpg" alt="Jeanette">
+          <div class="person-text-container">
+            <h2>Jeanette Kohl</h2>
+            <p>Associate Professor, Department of the History of Art</p>
+            <p>An authority on portraiture and the face in art</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-body">
+      <h2>The FACES 1.0 Publications</h2>
+      <p>
+        The FACES project was a collaboration of the humanities (art history) and the sciences (computer science). The 2017 article below presents FACES from the point of view of the humanities, that is, the general issues involved in the application of face recognition technology to works of portrait art, how this technology generally works, what the parameters of its application to portrait art are at the current time, what its potential advantages are, and so on.  The 2015 article presents FACES from the computer science angle, though this program, FACES 1.0, is now surpassed by FACES 2.0.  Both papers are meant to operate as a pair.
+      </p>
+      <p><em><small>
+        Conrad Rudolph, Amit Roy-Chowdhury, Ramya Srinivasan, and Jeanette Kohl, "FACES: Faces, Art, and Computerized Evaluation Systems--A Feasibility Study of the Application of Face Recognition Technology to Works of Portrait Art," Artibus et Historiae 75 (2017) 265-291.
+      </small></em></p>
+      <p><em><small>
+        Ramya Srinivasan, Conrad Rudolph, and Amit Roy-Chowdhury, "Computerized Face Recognition in Renaissance Portrait Art," Signal Processing Magazine 32:4 (July 2015) 85-94.
+      </small></em></p>
+    </div>
+    <div id="people-container">
+      <h2>The FACES 1.0 Teams</h2>
+      <div class="row">
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/conrad.jpg" alt="Conrad">
+          <div class="person-text-container">
+            <h2>Conrad Rudolph</h2>
+            <p>Professor, Department of the History of Art</p>
+            <p>Project Director and Principal Investigator</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/amit.jpg" alt="Amit">
+          <div class="person-text-container">
+            <h2>Amit Roy-Chowdhury</h2>
+            <p>Professor, Department of Electrical Engineering, University of California, Riverside</p>
+            <p>Computer vision and image processing expert</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/conrad.jpg" alt="Akash">
+          <div class="person-text-container">
+            <h2>Akash Gupta</h2>
+            <p>Masters Student, Department of Electrical Engineering, University of California, Riverside</p>
+            <p>Computer vision and image processing research</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/conrad.jpg" alt="Niluthpol">
+          <div class="person-text-container">
+            <h2>Niluthpol Chowdhury Mithun</h2>
+            <p>Doctoral Student, Department of Electrical Engineering</p>
+            <p>Computer vision and image processing assistance</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+        <div class="col-md-4 person-card">
+          <img class="person" src="/static/people/john.png" alt="John">
+          <div class="person-text-container">
+            <h2>John Pham</h2>
+            <p>Undergradute Student, Department of Computer Science and Engineering</p>
+            <p>Front-end developer</p>
+            <p><small>University of California, Riverside</small></p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text-body">
+      <h2>The FACES 2.0 Publications</h2>
+      <p><em><small>
+        Coming soon
+      </small></em></p>
     </div>
   </div>
 </template>
@@ -76,5 +184,34 @@ body {
 }
 .text-body h2 {
     padding-top: 50px;
+}
+#people-container {
+    background: #111;
+    padding-left: 20%;
+    padding-right: 20%;
+    text-align: center;
+    padding-bottom: 50px;
+}
+#people-container h2 {
+    padding-top: 10px;
+    color: white;
+}
+.person-card {
+    max-height: 500px;
+    padding-left: 10px;
+    padding-right: 10px;
+    margin-bottom: 150px;
+}
+.person-card h2 {
+    color: black !important;
+}
+.person {
+    width: 100%;
+}
+.person-text-container {
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-bottom: 10px;
+    background: white;
 }
 </style>

@@ -5,12 +5,14 @@
   "author": "John Pham <johnphammail@gmail.com>",
   "private": true,
   "scripts": {
-    "dev": "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
-    "start": "npm run dev",
+    "dev":
+      "webpack-dev-server --inline --progress --config build/webpack.dev.conf.js",
+    "start": "node server.js",
     "build": "node build/build.js"
   },
   "dependencies": {
     "axios": "^0.17.1",
+    "express": "^4.16.2",
     "sweetalert2": "^7.12.0",
     "vue": "^2.5.2",
     "vue-router": "^3.0.1"
@@ -56,9 +58,5 @@
     "node": ">= 6.0.0",
     "npm": ">= 3.0.0"
   },
-  "browserslist": [
-    "> 1%",
-    "last 2 versions",
-    "not ie <= 8"
-  ]
+  "browserslist": ["> 1%", "last 2 versions", "not ie <= 8"]
 }

@@ -1,7 +1,7 @@
 <template>
   <div id="home">
     <div class="text-body">
-      <h2>Introduction</h2>
+      <h2 class="title">Introduction</h2>
       <p>
         Before the nineteenth century, most portraits were, almost by definition, depictions of people who were important in their own worlds.  But, as a walk through almost any major art museum will show, a large number of these portraits from before the nineteenth century have lost the identities of their subjects through the fortunes of time.  Traditionally, identification of many of these portraits has been limited to often quite variable personal opinion.  Formed in 2011, the FACES project has undertaken the systematic application of face recognition technology to this highly subjective aspect of art history, establishing proof of concept, while at the same time retaining the human eye as the final arbiter.
       </p>
@@ -9,7 +9,7 @@
         In the application of this technology to actual (that is, photographed) faces, a number of difficulties are inherent in a real or perceived alteration of appearance of the face through variations in age, lighting, angle of pose, facial hair, expression, and the very identity of the subject ("doubles").   With portraiture in sculpture, painting, and drawing, not only do all the problems that apply to photographed subjects pertain but these works of art also have their own additional challenges.   Most notably, portrait art does not provide what might be called a photographic likeness but rather one that goes through a process of visual interpretation on the part of the artist.
       </p>
 
-      <h2>FACES 1.0</h2>
+      <h2 class="title">FACES 1.0</h2>
       <p>
         In the hope of addressing the challenges mentioned above, the FACES research team sought and received two grants from the National Endowment for the Humanities, grants whose two years (2012-2014) of support allowed us to establish proof of concept of our project.  Briefly put, what proof of concept meant was addressing four main areas: identifying the issues, establishing the basic methodology, applying the FACES algorithm that is the core of this methodology to a particular set of paradigms in order to establish the initial parameters of the technology, and, finally, applying the FACES algorithm to a body of chosen "identifications."  (We use the term paradigm here to mean a logically chosen body of related images directed toward a particular demonstrative end--small study groups of images.)
       </p>
@@ -32,7 +32,7 @@
         At the end of our NEH funded project, we concluded that we needed an automated FACES.
       </p>
 
-      <h2>FACES 2.0</h2>
+      <h2 class="title">FACES 2.0</h2>
       <p>
         At the start of the project to automate FACES--FACES 2.0, funded by the Samuel H. Kress Foundation (2016-2018), a project that enabled us to make FACES available on the website of the Frick Art Reference Library of Frick Collection--the decision was made to completely redesign the program.  The specific applications of feature extraction mentioned above were dropped entirely in favor of the wholly different method of machine learning known as deep neural networks.  The key issue in restoring lost identities to works of portrait art, however, remained the initial one: how to test one portrait against another, both of which were subject to the subjectivity of artistic interpretation--all of this being dependent, of course, upon the method, ability, and intentions of the individual artist.
       </p>
@@ -46,10 +46,9 @@
 
     </div>
     <div id="people-container">
-      <h2>The FACES 1.0 Teams</h2>
+      <h2 class="title">The FACES 1.0 Teams</h2>
       <div class="row">
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/conrad.jpg" alt="Conrad">
           <div class="person-text-container">
             <h2>Conrad Rudolph</h2>
             <p>Professor, Department of the History of Art</p>
@@ -58,7 +57,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/amit.jpg" alt="Amit">
           <div class="person-text-container">
             <h2>Amit Roy-Chowdhury</h2>
             <p>Professor, Department of Electrical Engineering, University of California, Riverside</p>
@@ -67,7 +65,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/conrad.jpg" alt="Ramya">
           <div class="person-text-container">
             <h2>Ramya Srinivasan</h2>
             <p>Doctoral Student, Department of Electrical Engineering, University of California, Riverside</p>
@@ -76,7 +73,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/conrad.jpg" alt="Jeanette">
           <div class="person-text-container">
             <h2>Jeanette Kohl</h2>
             <p>Associate Professor, Department of the History of Art</p>
@@ -87,7 +83,7 @@
       </div>
     </div>
     <div class="text-body">
-      <h2>The FACES 1.0 Publications</h2>
+      <h2 class="title">The FACES 1.0 Publications</h2>
       <p>
         The FACES project was a collaboration of the humanities (art history) and the sciences (computer science). The 2017 article below presents FACES from the point of view of the humanities, that is, the general issues involved in the application of face recognition technology to works of portrait art, how this technology generally works, what the parameters of its application to portrait art are at the current time, what its potential advantages are, and so on.  The 2015 article presents FACES from the computer science angle, though this program, FACES 1.0, is now surpassed by FACES 2.0.  Both papers are meant to operate as a pair.
       </p>
@@ -99,10 +95,9 @@
       </small></em></p>
     </div>
     <div id="people-container">
-      <h2>The FACES 1.0 Teams</h2>
+      <h2 class="title">The FACES 1.0 Teams</h2>
       <div class="row">
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/conrad.jpg" alt="Conrad">
           <div class="person-text-container">
             <h2>Conrad Rudolph</h2>
             <p>Professor, Department of the History of Art</p>
@@ -111,7 +106,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/amit.jpg" alt="Amit">
           <div class="person-text-container">
             <h2>Amit Roy-Chowdhury</h2>
             <p>Professor, Department of Electrical Engineering, University of California, Riverside</p>
@@ -120,7 +114,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/conrad.jpg" alt="Akash">
           <div class="person-text-container">
             <h2>Akash Gupta</h2>
             <p>Masters Student, Department of Electrical Engineering, University of California, Riverside</p>
@@ -129,7 +122,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/conrad.jpg" alt="Niluthpol">
           <div class="person-text-container">
             <h2>Niluthpol Chowdhury Mithun</h2>
             <p>Doctoral Student, Department of Electrical Engineering</p>
@@ -138,7 +130,6 @@
           </div>
         </div>
         <div class="col-md-4 person-card">
-          <img class="person" src="/static/people/john.png" alt="John">
           <div class="person-text-container">
             <h2>John Pham</h2>
             <p>Undergradute Student, Department of Computer Science and Engineering</p>
@@ -149,7 +140,7 @@
       </div>
     </div>
     <div class="text-body">
-      <h2>The FACES 2.0 Publications</h2>
+      <h2 class="title">The FACES 2.0 Publications</h2>
       <p><em><small>
         Coming soon
       </small></em></p>
@@ -193,14 +184,13 @@ body {
     padding-bottom: 50px;
 }
 #people-container h2 {
-    padding-top: 10px;
     color: white;
 }
 .person-card {
     max-height: 500px;
     padding-left: 10px;
     padding-right: 10px;
-    margin-bottom: 150px;
+    margin-bottom: 20px;
 }
 .person-card h2 {
     color: black !important;
@@ -213,5 +203,10 @@ body {
     padding-right: 10px;
     padding-bottom: 10px;
     background: white;
+}
+.title {
+    font-weight: 800;
+    padding-top: 50px;
+    margin-bottom: 50px;
 }
 </style>

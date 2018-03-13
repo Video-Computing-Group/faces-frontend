@@ -18,7 +18,7 @@
 
       <h2>READ THIS</h2>
       <p>
-        This technology does not prove the identity of its subjects, either absolutely (for example,that the image is unquestionably Mary Queen of Scots) or  relatively (for example, that the image unquestionably matches an uncertain type, such as "Shakespeare Type 1" or "Shakespeare Type2").
+        This technology does not prove the identity of its subjects, either absolutely (for example,that the image is unquestionably Mary Queen of Scots) or  relatively (for example, that the image unquestionably matches an uncertain type, such as "Shakespeare Type 1" or "Shakespeare Type 2").
       </p>
       <p>
         FACES is a pioneering program and so users must not expect completion or perfection any more than with any other new digitally-based technology, all of which typically go through long periods of development.  The application of face recognition technology to works of art will certainly be refined in probably every area, but only in the course of its adoption by the museum and academic communities.

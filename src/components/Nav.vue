@@ -18,7 +18,7 @@
             <router-link class="nav-link" :to="{ name: 'App' }">App</router-link>
           </li>
           <li class="nav-item">
-            <router-link class="nav-link" :to="{ name: 'People' }">Curators and Academics</router-link>
+            <router-link class="nav-link" :to="{ name: 'Curators and Academics' }">Curators and Academics</router-link>
           </li>
         </ul>
       </div>

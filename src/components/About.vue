@@ -139,12 +139,12 @@
         </div>
       </div>
     </div>
-    <div class="text-body">
+    <!-- <div class="text-body">
       <h2 class="title">The FACES 2.0 Publications</h2>
       <p><em><small>
         Coming soon
       </small></em></p>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -201,6 +201,7 @@ body {
 .person-text-container {
     padding-left: 10px;
     padding-right: 10px;
+    padding-top: 10px;
     padding-bottom: 10px;
     background: white;
 }

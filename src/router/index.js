@@ -3,7 +3,7 @@ import Router from 'vue-router'
 import Home from '@/components/Home'
 import App from '@/components/App'
 import About from '@/components/About'
-import People from '@/components/People'
+import CandA from '@/components/CandA'
 
 Vue.use(Router)
 
@@ -25,9 +25,9 @@ export default new Router({
       component: About
     },
     {
-      path: '/people',
-      name: 'People',
-      component: People
+      path: '/curatorsandacademics',
+      name: 'Curators and Academics',
+      component: CandA
     }
   ],
   mode: 'history'

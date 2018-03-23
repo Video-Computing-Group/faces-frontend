@@ -4,6 +4,7 @@ import Home from '@/components/Home'
 import App from '@/components/App'
 import About from '@/components/About'
 import CandA from '@/components/CandA'
+import Login from '@/components/Login'
 
 Vue.use(Router)
 
@@ -28,6 +29,11 @@ export default new Router({
       path: '/curatorsandacademics',
       name: 'Curators and Academics',
       component: CandA
+    },
+    {
+      path: '/login',
+      name: 'Login',
+      component: Login
     }
   ],
   mode: 'history'

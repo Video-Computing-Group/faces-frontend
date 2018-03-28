@@ -1,5 +1,5 @@
 <template>
-  <div id="main">
+  <div id="main" class="text-center">
     <div class="row img-container">
       <div class="img-upload row">
         <div class="col-md-6">
@@ -82,7 +82,6 @@
 </template>
 
 <script>
-import swal from 'sweetalert2'
 import axios from 'axios'
 
 export default {
@@ -95,6 +94,44 @@ export default {
             serverUrl: 'http://68e8e401.ngrok.io/api/compare',
             comparisonResult: ''
         }
+    },
+    mounted: function() {
+        this.$swal.setDefaults({
+            confirmButtonText: 'Next &rarr;',
+            showCancelButton: false,
+            progressSteps: ['1', '2', '3'],
+            width: '80%'
+        })
+
+        let steps = [
+            {
+                title: 'About the App',
+                html: `
+                    <p>A simple test involves testing a single unknown image against a single known image.  If all of the images used are of good quality, this test will provide a fair amount of probability.</p>
+                    <p>An advanced test involves testing a single unknown image against more than one known image.  The more known images that are used, the more reliable the test results will be.</p>
+                `
+            },
+            {
+                title: 'Requirements',
+                html: `
+                    <p>FACES tests an image of unknown or uncertain identity against one or more images of known identity.  By "known identity," we mean either an identity that is considered to be certain (for example, an image that can be proven to portray Mary Queen of Scots) or a name that is attached to a body of facial characteristics (for example, an image that belongs to a body of portraits that cannot be proven to portray the historical figure William Shakespeare but that might be grouped as types: "Shakespeare Type 1," "Shakespeare Type 2," and so on).</p>
+                    <p>While FACES can test a single unknown portrait against a single known one, the outcome of the testing is more reliable when more than one known portrait is used--three or four knowns might be a good minimum but the user should test as many good knowns as possible.  (An analogy might be public opinion testing: statistically, a poll of forty people would be considered less reliable than a poll of two hundred.)  FACES is a form of data analysis and the results are only as good as the data the user inputs into the FACES application.</p>
+                    <p>It is crucial to use good images.  The use of poor quality images may result in unreliable (and so misleading) results.  A good image is probably best described as a "good quality" portrait.  That is, it should be an original portrait (not a copy made by a later painter, sculptor, drawer, or engraver--these are sometimes perfectly reliable copies but at other times they can be unreliable, depending upon how accomplished the copyist or reproduction process was).  Other factors that can affect the quality of images and so the reliability of the results are portraits whose surfaces have been altered, for example through repainting, unprofessional cleaning, or exposure to the elements--all of which are common with older portraits.
+                    </p>
+                `
+            },
+            {
+                title: 'Requirements 2',
+                html: `
+                    <p>A good image is one that is reasonably detailed, that is, it gives enough facial "information" for FACES to read effectively.  Often, depictions of faces that do not occupy a large enough area of the picture space will not be large enough to convey enough information (for example, a small figure in a larger landscape, cityscape, or group of people).  If your image has more than one face, FACES doesn't know which one you want and so you must crop out any face other than the one you want tested.  High resolution (high dpi) images, which provide more information of a given face, will be more successful than low resolution images, which provide less information.  However, it is the resolution of the face, not the entire image, that matters.</p>
+                    <p>Currently, FACES is designed to work on portraits depicted from straight on or from a traditional three-quarter's view--not profiles or radically angled faces--and early modern Western portraits.</p>
+                    <p>Variations in age of more than ten years in images of adults (sometimes only a few years in younger subjects, depending on their age) may affect reliability.  Strong variations in lighting, facial hair, facial expression, and so on may reduce or affect the information to be read by FACES and so affect the reliability of the test results.  (In all this, FACES is no different from the use of face recognition technology with actual photographed faces.)</p>
+                    <p>Also, in some cases, the use of certain media--for example, marble as opposed to terracotta, oil in contrast to chalk--which human perception reads as more or less identical, are read more precisely by FACES, because of the sometimes greater exactitude of particular media in detailing facial information.</p>
+                `
+            }
+        ]
+
+        this.$swal.queue(steps)
     },
     methods: {
         onFileChange1(e) {

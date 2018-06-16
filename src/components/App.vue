@@ -1,29 +1,25 @@
 <template>
-  <div id="main" class="text-center">
+  <div 
+    id="main" 
+    class="text-center">
     <div class="row img-container">
       <div class="img-upload row">
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-              <img v-if="testImage"
-                :src="testImage"
-                class="userImage"
-              />
 
-              <div v-if="!testImage" class="dropbox">
-                <input type="file" :name="testImage" @change="onFileChange1" accept="image/*" class="input-file">
-                <p>
-                  Click to upload test image
-                </p>
-              </div>
+              <picture-input 
+                ref="testImage" 
+                :custom-strings="{tap: 'Click here to upload a test image'}"
+                :removable="true"
+                width="300" 
+                height="300" 
+                margin="16" 
+                accept="image/jpeg,image/png" 
+                size="10"
+                button-class="btn"
+                @change="onChange"/>
 
-              <button
-                v-if="testImage"
-                @click="removeImage(1)"
-                class="btn btn-primary btn-remove"
-              >
-                Remove
-              </button>
             </div>
           </div>
         </div>
@@ -31,61 +27,53 @@
         <div class="col-md-6">
           <div class="card">
             <div class="card-body">
-                <div class="dropbox" v-if="referenceImages.length == 0">
-                  <input type="file" :name="referenceImages" @change="onFileChange2" accept="image/*" class="input-file">
-                  <p>
-                    Click to upload reference image(s) (up to 10)
-                  </p>
-              </div>
               
-              <span
-                v-for="(image, index) in referenceImages"
-                :key="image"
-              >
-                <img
-                    :src="image"
-                    class="userImage"
-                />
-
-                <button
-                    v-if="referenceImages.length"
-                    @click="removeReferenceImage(index)"
-                    class="btn btn-primary btn-remove"
-                >Remove Image {{ index }}</button>
-              </span>
-
-              
-
+              <picture-input 
+                ref="referenceImage" 
+                :custom-strings="{tap: 'Click here to upload a reference image'}"
+                :removable="true"
+                width="300" 
+                height="300" 
+                margin="16" 
+                accept="image/jpeg,image/png" 
+                size="10"
+                button-class="btn"
+                @change="onChangeReference"/>
               
             </div>
           </div>
         </div>
 
-        <div class="col-md-6 offset-md-3" v-if="comparing" >
+        <div 
+          v-if="comparing" 
+          class="col-md-6 offset-md-3" >
           <div class="card data">
-            <div class="my-auto card-body text-center">
-              <h1>Data: {{ confidence }}%</h1>
-              <p>Label: {{ decision }}</p>
+            <div
+              v-for="(p, index) in predictions"
+              :key="index"
+              class="my-auto card-body text-center"
+            >
+              <h1>{{ p.result.toFixed(2) }}%</h1>
+              <p>{{ p.decision }}</p>
             </div>
           </div>
         </div>
       </div>
 
-
       <button
+        v-if="!comparing"
         type="button"
         class="btn btn-primary btn-lg btn-block btn-action"
         @click="compareImages"
-        v-if="!comparing"
       >
         Compare Images
       </button>
 
       <button
+        v-else
         type="button"
         class="btn btn-warning btn-lg btn-block btn-action"
         @click="reset"
-        v-else
       >
         Compare New Images
       </button>
@@ -94,38 +82,43 @@
 </template>
 
 <script>
-import axios from 'axios';
+import axios from "axios";
+import PictureInput from "vue-picture-input";
 
 export default {
-  name: 'App',
+  name: "App",
+  components: {
+    PictureInput
+  },
   data() {
     return {
-      testImage: '',
+      testImage: "",
       referenceImages: [],
       comparing: false,
-      serverUrl: 'http://zeus.johnpham.net:5000/api/compare',
-      confidence: '',
-      decision: ''
+      serverUrl: "http://zeus.johnpham.net:5000/api/compare",
+      confidence: "",
+      decision: "",
+      predictions: ""
     };
   },
   mounted: function() {
     this.$swal.setDefaults({
-      confirmButtonText: 'Next &rarr;',
+      confirmButtonText: "Next &rarr;",
       showCancelButton: false,
-      progressSteps: ['1', '2', '3'],
-      width: '80%'
+      progressSteps: ["1", "2", "3"],
+      width: "80%"
     });
 
     let steps = [
       {
-        title: 'About the App',
+        title: "About the App",
         html: `
                     <p>A simple test involves testing a single unknown image against a single known image.  If all of the images used are of good quality, this test will provide a fair amount of probability.</p>
                     <p>An advanced test involves testing a single unknown image against more than one known image.  The more known images that are used, the more reliable the test results will be.</p>
                 `
       },
       {
-        title: 'Requirements',
+        title: "Requirements",
         html: `
                     <p>FACES tests an image of unknown or uncertain identity against one or more images of known identity.  By "known identity," we mean either an identity that is considered to be certain (for example, an image that can be proven to portray Mary Queen of Scots) or a name that is attached to a body of facial characteristics (for example, an image that belongs to a body of portraits that cannot be proven to portray the historical figure William Shakespeare but that might be grouped as types: "Shakespeare Type 1," "Shakespeare Type 2," and so on).</p>
                     <p>While FACES can test a single unknown portrait against a single known one, the outcome of the testing is more reliable when more than one known portrait is used--three or four knowns might be a good minimum but the user should test as many good knowns as possible.  (An analogy might be public opinion testing: statistically, a poll of forty people would be considered less reliable than a poll of two hundred.)  FACES is a form of data analysis and the results are only as good as the data the user inputs into the FACES application.</p>
@@ -134,7 +127,7 @@ export default {
                 `
       },
       {
-        title: 'Requirements 2',
+        title: "Requirements 2",
         html: `
                     <p>A good image is one that is reasonably detailed, that is, it gives enough facial "information" for FACES to read effectively.  Often, depictions of faces that do not occupy a large enough area of the picture space will not be large enough to convey enough information (for example, a small figure in a larger landscape, cityscape, or group of people).  If your image has more than one face, FACES doesn't know which one you want and so you must crop out any face other than the one you want tested.  High resolution (high dpi) images, which provide more information of a given face, will be more successful than low resolution images, which provide less information.  However, it is the resolution of the face, not the entire image, that matters.</p>
                     <p>Currently, FACES is designed to work on portraits depicted from straight on or from a traditional three-quarter's view--not profiles or radically angled faces--and early modern Western portraits.</p>
@@ -147,34 +140,14 @@ export default {
     // this.$swal.queue(steps);
   },
   methods: {
-    onFileChange1(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0], 1);
+    onChange(image) {
+      if (image) {
+        this.testImage = this.$refs.testImage.file;
+      }
     },
-    onFileChange2(e) {
-      let files = e.target.files || e.dataTransfer.files;
-      if (!files.length) return;
-      this.createImage(files[0], 2);
-    },
-    createImage(file, num) {
-      let image = new Image();
-      let reader = new FileReader();
-
-      reader.onload = e => {
-        if (num === 1) {
-          this.testImage = e.target.result;
-        } else if (num === 2) {
-          this.referenceImages.push(e.target.result);
-        }
-      };
-      reader.readAsDataURL(file);
-    },
-    removeImage: function(num) {
-      if (num === 1) {
-        this.testImage = '';
-      } else if (num === 2) {
-        this.referenceImages = '';
+    onChangeReference(image) {
+      if (image) {
+        this.referenceImages = this.$refs.referenceImage.file;
       }
     },
     removeReferenceImage(index) {
@@ -183,39 +156,40 @@ export default {
       );
     },
     compareImages() {
-      if (!this.testImage.length || !this.referenceImages.length) {
-        swal('Error', 'You must upload 2 images', 'error');
+      if (!this.testImage || !this.referenceImages) {
+        swal("Error", "You must upload 2 images", "error");
       } else {
         this.comparing = true;
 
-        let dataArray = [];
-        dataArray.push(this.testImage);
-        dataArray.push(this.referenceImages);
+        let formData = new FormData();
+        formData.append("image[0]", this.testImage);
+        formData.append("image[1]", this.referenceImages);
 
-        let that = this;
         axios
-          .post(this.serverUrl, dataArray, {
-            crossdomain: true
+          .post(this.serverUrl, formData, {
+            headers: {
+              "Content-Type": "multipart/form-data"
+            }
           })
-          .then(function(response) {
-            console.log(response.data);
-            that.confidence = response.data;
+          .then(res => {
+            console.log(res.data);
+            this.predictions = res.data;
           });
       }
     },
     reset() {
       this.comparing = false;
-      this.testImage = '';
-      this.referenceImages = '';
+      this.$refs.testImage.removeImage();
+      this.$refs.referenceImage.removeImage();
     }
   }
 };
 </script>
 
 <style>
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@import url("https://fonts.googleapis.com/css?family=Montserrat");
 body {
-  font-family: 'Montserrat', sans-serif;
+  font-family: "Montserrat", sans-serif;
 }
 #main {
   height: 100% !important;
@@ -293,6 +267,9 @@ body {
 h1 {
   color: white;
 }
+p {
+  color: white;
+}
 .btn-action {
   position: absolute;
   bottom: 0;
@@ -313,5 +290,8 @@ h1 {
 .card-body {
   display: flex;
   justify-content: center;
+}
+.picture-inner-text {
+  color: white;
 }
 </style>

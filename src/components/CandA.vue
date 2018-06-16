@@ -44,64 +44,64 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>
 html,
 body {
-    background: white !important;
+  background: white !important;
 }
 #home {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 .text-body {
-    background: white;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 10px;
-    padding-bottom: 50px;
-    text-align: center;
+  background: white;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  text-align: center;
 }
 .text-body p {
-    text-align: justify;
-    color: #626262;
+  text-align: justify;
+  color: #626262;
 }
 .text-body h2 {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 #people-container {
-    background: #111;
-    padding-left: 20%;
-    padding-right: 20%;
-    text-align: center;
-    padding-bottom: 50px;
+  background: #111;
+  padding-left: 20%;
+  padding-right: 20%;
+  text-align: center;
+  padding-bottom: 50px;
 }
 #people-container h2 {
-    color: white;
+  color: white;
 }
 .person-card {
-    max-height: 500px;
-    padding-left: 10px;
-    padding-right: 10px;
-    margin-bottom: 20px;
+  max-height: 500px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-bottom: 20px;
 }
 .person-card h2 {
-    color: black !important;
+  color: black !important;
 }
 .person {
-    width: 100%;
+  width: 100%;
 }
 .person-text-container {
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 10px;
-    background: white;
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-bottom: 10px;
+  background: white;
 }
 .title {
-    font-weight: 800;
-    padding-top: 50px;
-    margin-bottom: 50px;
+  font-weight: 800;
+  padding-top: 50px;
+  margin-bottom: 50px;
 }
 </style>

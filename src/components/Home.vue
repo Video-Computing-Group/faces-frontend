@@ -31,56 +31,56 @@
 </template>
 
 <script>
-export default {}
+export default {};
 </script>
 
 <style scoped>
 html,
 body {
-    background: white !important;
+  background: white !important;
 }
 #home {
-    height: 100%;
-    width: 100%;
+  height: 100%;
+  width: 100%;
 }
 .hero {
-    height: 100%;
-    width: 100%;
-    background: url('/static/hero.jpg');
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    background-position: center;
-    text-align: center;
-    color: white;
+  height: 100%;
+  width: 100%;
+  background: url("/static/hero.jpg");
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
+  text-align: center;
+  color: white;
 }
 .hero h1 {
-    font-size: 8em;
-    font-weight: 800;
-    text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
-        0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
-        0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
-        0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
-        0 20px 20px rgba(0, 0, 0, 0.15);
+  font-size: 8em;
+  font-weight: 800;
+  text-shadow: 0 1px 0 #ccc, 0 2px 0 #c9c9c9, 0 3px 0 #bbb, 0 4px 0 #b9b9b9,
+    0 5px 0 #aaa, 0 6px 1px rgba(0, 0, 0, 0.1), 0 0 5px rgba(0, 0, 0, 0.1),
+    0 1px 3px rgba(0, 0, 0, 0.3), 0 3px 5px rgba(0, 0, 0, 0.2),
+    0 5px 10px rgba(0, 0, 0, 0.25), 0 10px 10px rgba(0, 0, 0, 0.2),
+    0 20px 20px rgba(0, 0, 0, 0.15);
 }
 .hero-child {
-    width: 100%;
+  width: 100%;
 }
 .hero-child-container {
-    padding-top: 20%;
+  padding-top: 20%;
 }
 .text-body {
-    background: white;
-    padding-left: 20%;
-    padding-right: 20%;
-    padding-top: 10px;
-    padding-bottom: 50px;
-    text-align: center;
+  background: white;
+  padding-left: 20%;
+  padding-right: 20%;
+  padding-top: 10px;
+  padding-bottom: 50px;
+  text-align: center;
 }
 .text-body p {
-    text-align: justify;
-    color: #626262;
+  text-align: justify;
+  color: #626262;
 }
 .text-body h2 {
-    padding-top: 50px;
+  padding-top: 50px;
 }
 </style>

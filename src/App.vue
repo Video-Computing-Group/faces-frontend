@@ -17,12 +17,16 @@ export default {
 </script>
 
 <style>
-@import url("https://fonts.googleapis.com/css?family=Montserrat");
+@font-face {
+  font-family: GlacialIndifference;
+  src: url(/static/fonts/GlacialIndifference-Regular.otf);
+}
+@import url('https://fonts.googleapis.com/css?family=Oswald:400,500');
 html,
 body {
   height: 100%;
   width: 100%;
-  font-family: "Montserrat", sans-serif;
+  font-family: 'GlacialIndifference', 'Oswald', sans-serif;
   background: linear-gradient(to bottom right, #480844, #07455e);
 }
 #app {

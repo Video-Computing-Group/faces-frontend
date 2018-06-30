@@ -27,18 +27,18 @@
           </li>
           <li class="nav-item">
             <router-link 
-              :to="{ name: 'About' }" 
-              class="nav-link">About FACES</router-link>
+              :to="{ name: 'App' }" 
+              class="nav-link">Image Test</router-link>
           </li>
           <li class="nav-item">
             <router-link 
-              :to="{ name: 'App' }" 
-              class="nav-link">App</router-link>
+              :to="{ name: 'About' }" 
+              class="nav-link">History & Publications</router-link>
           </li>
           <li class="nav-item">
             <router-link 
               :to="{ name: 'Curators and Academics' }" 
-              class="nav-link">Curators and Academics</router-link>
+              class="nav-link">Curators & Academics</router-link>
           </li>
         </ul>
       </div>
@@ -47,14 +47,26 @@
 </template>
 
 <style scoped>
+.navbar {
+  padding-top: 50px;
+  background: white;
+  padding-bottom: 15px;
+  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+}
 a {
   color: #000;
+  font-size: 1.25em;
+  font-weight: 500;
+  text-transform: uppercase;
 }
 .router-link-active {
-  color: #a0ce4e;
-  font-weight: 800;
+  color: #929292;
+  font-weight: 700;
 }
-.navbar {
-  background: white;
+.nav-item {
+  margin-left: 50px;
+}
+.container {
+  max-width: 95%;
 }
 </style>

@@ -47,16 +47,18 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+
 .navbar {
   padding-top: 50px;
   background: white;
   padding-bottom: 15px;
-  font-family: Century Gothic, CenturyGothic, AppleGothic, sans-serif;
+  font-family: "Muli", "Century Gothic", "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", Futura, sans-serif;
 }
 a {
   color: #000;
   font-size: 1.25em;
-  font-weight: 500;
+  font-weight: 700;
   text-transform: uppercase;
 }
 .router-link-active {

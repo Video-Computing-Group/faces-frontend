@@ -1,11 +1,7 @@
 <template>
   <div id="home">
-    <div class="hero">
-      <div class="hero-child-container">
-        <h1 class="hero-child">FACES:</h1>
-        <h3 class="hero-child">Faces, Art, and Computerized Evaluation Systems</h3>
-      </div>
-    </div>
+    <hero />
+
     <div class="text-body">
       <h2>Face Recognition Evaluation for Works of Portrait Art</h2>
       <p>
@@ -38,7 +34,13 @@
 </template>
 
 <script>
-export default {};
+import Hero from './Hero'
+
+export default {
+  components: {
+    Hero
+  }
+};
 </script>
 
 <style scoped>
@@ -48,32 +50,6 @@ body {
 }
 #home {
   width: 100%;
-}
-.hero {
-  min-height: 400px;
-  width: 100%;
-  background: url("/static/hero.jpg");
-  background-repeat: no-repeat;
-  background-position: center;
-  background-size: cover;
-  color: white;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: end;
-}
-.hero {
-  font-size: 3em;
-  font-weight: 800;
-}
-.hero-child {
-  width: 100%;
-}
-.hero-child-container {
-  background: rgba(0,0,0,.65);
-  width: 100%;
-  padding-top: 10px;
-  padding-left: 10%;
-  padding-bottom: 70px;
 }
 .text-body {
   background: white;

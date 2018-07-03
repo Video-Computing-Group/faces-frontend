@@ -1,8 +1,8 @@
 <template>
     <div class="text-body alternative">
-      <img class="offset" src="/static/copernicus.jpg" alt="">
+      <img class="offset" src="/static/163CharlesIIEngland.jpg" alt="">
       <p class="caption offset">
-          Corpernicus (1473 - 1543) is one of the great figures in the history of science but all original portraits of him are believed to be lost. In 1976 the local Paduan art historian Sergio Bettini suggested in an Italian paper that Copernucus is depicted in a fresco by Giulio Campagnola in the Scoletta del Carmine in Padua.
+        Charles II of England
       </p>
       <slot></slot>
     </div>
@@ -40,7 +40,7 @@ export default {
   position: relative;
 }
 .alternative {
-  background-color: #d6d4ca;
+  background-color: white;
   padding-bottom: 10px;
 }
 .offset {

@@ -22,7 +22,7 @@
       </p>
       <figure class="img-right">
         <img src="/static/14BattistaSforza.jpg" alt="">
-        <figcaption>
+        <figcaption class="caption">
           Identified sculptural portrait compared to a death mask of assumed but uncertain identity.
         </figcaption>
       </figure>
@@ -34,7 +34,7 @@
       </p>
       <figure class="img-right">
         <img src="/static/144MargaretValois.jpg" alt="">
-        <figcaption>
+        <figcaption class="caption">
           Margaret of Valois, Queen Consort of France
         </figcaption>
       </figure>
@@ -48,7 +48,35 @@
         Also, in some cases, the use of certain media--for example, marble as opposed to terracotta, oil in contrast to chalk--which human perception reads as more or less identical, are read more precisely by FACES, because of the sometimes greater exactitude of particular media in detailing facial information.
       </p>
     </text-body-image>
-    <div 
+    <text-body-image-alt>
+
+    </text-body-image-alt>
+
+    <text-body-image-double>
+      <h2>Interpretting Results</h2>
+      <p>
+        Once your images have been tested, you will receive a number on a scale from 0 to 100, analogous to a percentage: this is the similarity score.  Generally speaking, any score over 56 may be considered to have the probability--not the certainty--of a match.  Any score under 47 may be considered to have the probability--again, not the certainty--of a non-match.  And any score from 47 to 56 is statistically equivocal--it could indicate either a match or a non-match.
+      </p>
+      <p>
+        Some probable matches and non-matches, however, are stronger than others.  For example, while similarity scores of 57 and 77 both suggest the probability of a match, the score of 77 represents a stronger probability (it would be a "strong score") than 57.  Non-match scores operate in the same way.
+      </p>
+      <p>
+        Because the distribution of scores is based upon a specific body of images (our particular database), it might vary slightly if the body of images varies.
+      </p>
+      <p>
+        This technology does not prove the identity of its subjects, either absolutely (for example, that the image is unquestionably Mary Queen of Scots) or relatively (for example, that the image unquestionably matches an uncertain type, such as "Shakespeare Type 1" or "Shakespeare Type 2").
+      </p>
+      <p>
+        The testing and the interpretation of the testing of historically significant individuals are not always straightforward and are best done by professional curators and academics who are fully aware the quality of these portraits, the changes they may have undergone through time, and the portrait practices of the time (including the reuse of portraits).  Also in such cases, copies are to be avoided except by those who fully understand their quality and their place in the history of the portraiture of the individual in question.
+      </p>
+      <p>
+        FACES is a pioneering program and so users must not expect completion or perfection any more than with any other new digitally-based technology, all of which typically go through long periods of development.  The application of face recognition technology to works of art will certainly be refined in probably every area of analysis, but only in the course of its adoption by the museum and academic communities.
+      </p>
+      <p>
+        Since there was no pre-existing database of processed images of works of portrait art for us to develop our program, we had to make our own, something we did with as much control over variables as possible.  Practically speaking, this meant a database composed of portraits from a historical period marked by its attention to naturalistic representation in general and, in particular, by artists known for such attention.  We found that portraits from Western Europe, fifteenth to early eighteenth century, suited our purposes best, and FACES was configured for this type of portrait.  While a larger database would provide greater accuracy, statistical tests show that FACES 2.0 has a 92% accuracy rate.  At the current time, FACES is not designed for profiles, strongly angled portraits, or portraits from other periods or cultures.
+      </p>
+    </text-body-image-double>
+    <!-- <div 
       id="main" 
       class="text-center">
       <div class="row img-container">
@@ -127,7 +155,7 @@
           Compare New Images
         </button>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
@@ -137,6 +165,8 @@ import PictureInput from "vue-picture-input";
 import Hero from './Hero';
 import TextBody from './TextBody';
 import TextBodyImage from './TextBodyImage';
+import TextBodyImageAlt from './TextBodyImageAlt';
+import TextBodyImageDouble from './TextBodyImageDouble';
 
 export default {
   name: "App",
@@ -144,7 +174,9 @@ export default {
     PictureInput,
     Hero,
     TextBody,
-    TextBodyImage
+    TextBodyImage,
+    TextBodyImageAlt,
+    TextBodyImageDouble
   },
   data() {
     return {
@@ -363,5 +395,12 @@ p {
   width: 300px;
   top: -150px;
   position: relative;
+}
+.caption {
+  padding-top: 10px;
+  text-align: center !important;
+  color: black !important;
+  font-family: 'Sorts Mill Goudy', serif !important;
+  font-size: 0.8em;
 }
 </style>

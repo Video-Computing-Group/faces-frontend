@@ -29,6 +29,7 @@ body {
   width: 100%;
 }
 p {
-  font-size: 1.25em;
+  font-family: 'GlacialIndifferenceRegular', sans-serif;
+  font-size: 1em;
 }
 </style>

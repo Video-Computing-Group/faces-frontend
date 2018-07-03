@@ -1,8 +1,8 @@
 <template>
     <div class="text-body alternative">
-      <img class="offset" src="/static/copernicus.jpg" alt="">
+      <img class="offset" src="/static/49DeMedici.jpg" alt="">
       <p class="caption offset">
-          Corpernicus (1473 - 1543) is one of the great figures in the history of science but all original portraits of him are believed to be lost. In 1976 the local Paduan art historian Sergio Bettini suggested in an Italian paper that Copernucus is depicted in a fresco by Giulio Campagnola in the Scoletta del Carmine in Padua.
+        Different images by the same artist (Francois Clouet) of the same individual (Catherine de'Medici).
       </p>
       <slot></slot>
     </div>
@@ -17,7 +17,7 @@ export default {
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy');
 .text-body {
-  background: white;
+  background: #17375e;
   padding-left: 20%;
   padding-right: 20%;
   padding-top: 10px;
@@ -40,12 +40,19 @@ export default {
   position: relative;
 }
 .alternative {
-  background-color: #d6d4ca;
+  background-color: #17375e;
   padding-bottom: 10px;
 }
 .offset {
   width: 100%;
   top: -150px;
   position: relative;
+}
+.caption {
+  padding-top: 10px;
+  text-align: center !important;
+  color: white !important;
+  font-family: 'Sorts Mill Goudy', serif !important;
+  font-size: 1em;
 }
 </style>

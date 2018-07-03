@@ -15,7 +15,8 @@ export default {
 
 <style scoped>
 .hero {
-  min-height: 500px;
+  font-family: 'GlacialIndifferenceBold', serif;
+  min-height: 650px;
   width: 100%;
   background: url("/static/hero.jpg");
   background-repeat: no-repeat;

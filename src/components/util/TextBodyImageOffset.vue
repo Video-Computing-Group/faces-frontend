@@ -1,8 +1,14 @@
 <template>
-    <div class="text-body alternative">
-      <img class="offset" src="/static/163CharlesIIEngland.jpg" alt="">
+    <div
+      class="text-body alternative"
+      :style="getBackgroundColor"
+    >
+      <img
+        class="offset"
+        :src="image"
+      >
       <p class="caption offset">
-        Charles II of England
+        <slot name="caption"></slot>
       </p>
       <slot></slot>
     </div>
@@ -10,7 +16,21 @@
 
 <script>
 export default {
-
+  props: ['image', 'color'],
+  computed: {
+    getBackgroundColor() {
+      let baseStyle = {
+        backgroundColor: 'white'
+      }
+      if (this.color === 'primary') {
+        baseStyle.backgroundColor = 'white'
+      }
+      else if (this.color === 'secondary') {
+        baseStyle.backgroundColor = '#d6d4ca'
+      }
+      return baseStyle;
+    }
+  }
 }
 </script>
 
@@ -40,12 +60,19 @@ export default {
   position: relative;
 }
 .alternative {
-  background-color: white;
+  background-color: #d6d4ca;
   padding-bottom: 10px;
 }
 .offset {
   width: 100%;
   top: -150px;
   position: relative;
+}
+.caption {
+  padding-top: 10px;
+  text-align: center !important;
+  color: black !important;
+  font-family: 'Sorts Mill Goudy', serif !important;
+  font-size: 0.8em;
 }
 </style>

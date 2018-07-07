@@ -16,10 +16,17 @@
         </strong>
       </p>
     </div>
-    <div class="text-body alternative">
-      <img class="offset" src="/static/homedemo.jpg" alt="">
-      <p class="caption offset">Uncertain painted portrait compared to painted portraits of certain identity.</p>
+    
+    <text-body-image
+      color="secondary"
+      image="/static/homedemo.jpg"
+    >
+      <template slot="caption">
+        Mary Queen of Scots: Three portraits of certain identity tested against one of uncertain identity.
+      </template>
+    </text-body-image>
 
+    <div class="text-body alternative">
       <div class="footer">
         <ul>
           <li><a href="#">Privacy Policy</a></li>
@@ -35,10 +42,12 @@
 
 <script>
 import Hero from './Hero'
+import TextBodyImage from './util/TextBodyImage'
 
 export default {
   components: {
-    Hero
+    Hero,
+    TextBodyImage
   }
 };
 </script>
@@ -61,7 +70,6 @@ body {
 }
 .text-body p {
   text-align: justify;
-  color: #626262;
 }
 .text-body h2 {
   padding-top: 50px;
@@ -75,11 +83,6 @@ body {
   width: 100%;
   top: -150px;
   position: relative;
-}
-.caption {
-  padding-top: 10px;
-  text-align: center !important;
-  color: black !important;
 }
 .footer ul {
   list-style-type: none;

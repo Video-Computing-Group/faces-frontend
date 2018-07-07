@@ -1,8 +1,11 @@
 <template>
-    <div class="text-body alternative">
-      <img class="offset" src="/static/49DeMedici.jpg" alt="">
+    <div
+      class="text-body alternative"
+      :style="getBackgroundColor"
+    >
+      <img class="offset" :src="image" alt="">
       <p class="caption offset">
-        Portraits of the same sitter, Catherine de'Medici, by the same artist, François Clouet.
+        <slot name="caption"></slot>
       </p>
       <slot></slot>
     </div>
@@ -10,14 +13,28 @@
 
 <script>
 export default {
-
+  props: ['color', 'image'],
+  computed: {
+    getBackgroundColor() {
+      let baseStyle = {
+        backgroundColor: 'white'
+      }
+      if (this.color === 'primary') {
+        baseStyle.backgroundColor = 'white'
+      }
+      else if (this.color === 'secondary') {
+        baseStyle.backgroundColor = '#d6d4ca'
+      }
+      return baseStyle;
+    }
+  }
 }
 </script>
 
 <style scoped>
 @import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy');
 .text-body {
-  background: #17375e;
+  background: white;
   padding-left: 20%;
   padding-right: 20%;
   padding-top: 10px;
@@ -40,7 +57,6 @@ export default {
   position: relative;
 }
 .alternative {
-  background-color: #17375e;
   padding-bottom: 10px;
 }
 .offset {
@@ -51,8 +67,8 @@ export default {
 .caption {
   padding-top: 10px;
   text-align: center !important;
-  color: white !important;
+  color: black !important;
   font-family: 'Sorts Mill Goudy', serif !important;
-  font-size: 1em;
+  font-size: 0.8em;
 }
 </style>

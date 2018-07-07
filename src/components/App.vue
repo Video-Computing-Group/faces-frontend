@@ -7,9 +7,13 @@
         FACES tests an image of unknown or uncertain identity against one or more images of known or provisional identity.  In this case, by "known identity," we mean an identity that is considered to be certain (for example, an image that can be proven to portray Mary Queen of Scots).  By "provisional identity" we mean a name that is provisionally attached to a particular portrait until that identity can be worked out with greater certainty (for example, an image that cannot be proven to portray the historical figure William Shakespeare but that is traditionally said to be of Shakespeare).  In this, FACES has the potential to match what is known with a given unknown--something that is unlikely to be accidental--and has the potential of providing previously unnoticeable or unconfirmable information by contributing categories of quantifiable data for researchers to factor into their own analyses.
       </p>
     </text-body>
-    <text-body-image>
+
+    <text-body-image-r image="/static/bernini.jpg">
+      <template slot="caption">
+        Gian Lorenzo Bernini, by himself, at various stages of his life. 
+      </template>
       <h2>
-        FACES 2.0 has two test levels.
+        FACES 2.0 has two test levels
       </h2>
       <p>
         <strong>A simple test</strong> involves testing a single unknown image against a single known image.  If all of the images used are of good quality, this test will provide a fair amount of probability.
@@ -20,24 +24,18 @@
       <p>
         While FACES can test a single unknown portrait against a single known one, the outcome of the testing is more reliable when more than one known portrait is used--three or four knowns might be a good minimum but the user should test as many good knowns as possible.  (An analogy might be public opinion testing: statistically, a poll of one hundred people would be considered less reliable than a poll of four hundred.)  FACES is a form of data analysis and the results are only as good as the data the user inputs into the FACES application.
       </p>
-      <figure class="img-right">
-        <img src="/static/14BattistaSforza.jpg" alt="">
-        <figcaption class="caption">
-          Identified sculptural portrait compared to a death mask of assumed but uncertain identity.
-        </figcaption>
-      </figure>
+      <image-inset image="/static/14BattistaSforza.jpg">
+        Identified sculptural portrait compared to a death mask of assumed but uncertain identity.
+      </image-inset>
       <p>
         It is crucial to use good images.  The use of poor quality images may result in unreliable (and so misleading) results.  A good image is probably best described as a "good quality" portrait.  That is, it should be an original portrait (not a copy made by a later painter, sculptor, drawer, or engraver (these are sometimes perfectly reliable copies, but at other times they can be unreliable depending upon how accomplished the copyist or reproduction process was).  Other factors that can affect the quality of images and so the reliability of the results are portraits whose surfaces have been altered, for example through repainting, unprofessional cleaning, or neglect--all of which are common with older portraits.
       </p>
       <p>
         A good image is one that is reasonably detailed, that is, it gives enough facial "information" for FACES to read effectively.  Often, depictions of faces that do not occupy a large enough area of the picture space will not be large enough to convey enough information (for example, a small figure in a larger landscape, cityscape, or group of people).  If your image has more than one face, FACES doesn't know which one you want and so you must crop out any face other than the one you want tested.  High resolution (high ppi) images, which provide more information of a given face, will be more successful than low resolution images, which provide less information.  However, it is the resolution of the face, not the entire image, that matters.
       </p>
-      <figure class="img-right">
-        <img src="/static/144MargaretValois.jpg" alt="">
-        <figcaption class="caption">
+      <image-inset image="/static/144MargaretValois.jpg">
           Margaret of Valois, Queen Consort of France
-        </figcaption>
-      </figure>
+      </image-inset>
       <p>
         Currently, FACES is designed to work on early modern Western portraits depicted from straight on or from a traditional three-quarter's view.  It has not yet been trained to process profiles or radically angled faces.
       </p>
@@ -47,12 +45,16 @@
       <p>
         Also, in some cases, the use of certain media--for example, marble as opposed to terracotta, oil in contrast to chalk--which human perception reads as more or less identical, are read more precisely by FACES, because of the sometimes greater exactitude of particular media in detailing facial information.
       </p>
-    </text-body-image>
+    </text-body-image-r>
+    
     <text-body-image-alt>
 
     </text-body-image-alt>
 
-    <text-body-image-double>
+    <text-body-image-r image="/static/163CharlesIIEngland.jpg">
+      <template slot="caption">
+        Portraits of the same sitter, Charless II of England, by different artists.
+      </template>
       <h2>Interpretting Results</h2>
       <p>
         Once your images have been tested, you will receive a number on a scale from 0 to 100, analogous to a percentage: this is the similarity score.  Generally speaking, any score over 56 may be considered to have the probability--not the certainty--of a match.  Any score under 47 may be considered to have the probability--again, not the certainty--of a non-match.  And any score from 47 to 56 is statistically equivocal--it could indicate either a match or a non-match.
@@ -75,7 +77,7 @@
       <p>
         Since there was no pre-existing database of processed images of works of portrait art for us to develop our program, we had to make our own, something we did with as much control over variables as possible.  Practically speaking, this meant a database composed of portraits from a historical period marked by its attention to naturalistic representation in general and, in particular, by artists known for such attention.  We found that portraits from Western Europe, fifteenth to early eighteenth century, suited our purposes best, and FACES was configured for this type of portrait.  While a larger database would provide greater accuracy, statistical tests show that FACES 2.0 has a 92% accuracy rate.  At the current time, FACES is not designed for profiles, strongly angled portraits, or portraits from other periods or cultures.
       </p>
-    </text-body-image-double>
+    </text-body-image-r>
     <!-- <div 
       id="main" 
       class="text-center">
@@ -166,7 +168,8 @@ import Hero from './Hero';
 import TextBody from './TextBody';
 import TextBodyImage from './TextBodyImage';
 import TextBodyImageAlt from './TextBodyImageAlt';
-import TextBodyImageDouble from './TextBodyImageDouble';
+import TextBodyImageR from './util/TextBodyImageOffset';
+import ImageInset from './util/ImageInset';
 
 export default {
   name: "App",
@@ -176,7 +179,8 @@ export default {
     TextBody,
     TextBodyImage,
     TextBodyImageAlt,
-    TextBodyImageDouble
+    TextBodyImageR,
+    ImageInset
   },
   data() {
     return {
@@ -274,7 +278,7 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 @import url("https://fonts.googleapis.com/css?family=Montserrat");
 body {
   font-family: "Montserrat", sans-serif;
@@ -381,26 +385,5 @@ p {
 }
 .picture-inner-text {
   color: white;
-}
-.img-right {
-  float: right;
-  margin: 0px 0px 20px 30px;
-}
-.img-right img {
-  width: 300px;
-  top: -150px;
-  position: relative;
-}
-.img-right figcaption {
-  width: 300px;
-  top: -150px;
-  position: relative;
-}
-.caption {
-  padding-top: 10px;
-  text-align: center !important;
-  color: black !important;
-  font-family: 'Sorts Mill Goudy', serif !important;
-  font-size: 0.8em;
 }
 </style>

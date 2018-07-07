@@ -1,5 +1,15 @@
 <template>
   <div id="home">
+    <hero />
+    <text-body>
+      <h2>
+        What FACES 2.0 might be used for for future directions for those interested in developing new computer vision programs
+      </h2>
+
+      <p>
+        
+      </p>
+    </text-body>
     <div class="text-body">
       <h2 class="title">Introduction: Potential uses for academics and curators</h2>
       <p>
@@ -44,7 +54,15 @@
 </template>
 
 <script>
-export default {};
+import Hero from './Hero'
+import TextBody from './TextBody'
+
+export default {
+  components: {
+    Hero,
+    TextBody
+  }
+};
 </script>
 
 <style scoped>

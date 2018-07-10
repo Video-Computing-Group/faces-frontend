@@ -63,16 +63,16 @@
       <p>
         In this, we leveraged the state-of-the-art face recognition framework VGG-16 to learn (to teach the computer) the parameters for distinguishing between a given pair of works of portrait art.  Because deep neural networking requires very large amounts of training data, and because we are at a very early stage of research on the application of face recognition technology to works of portrait art, we were limited by the size of the original portrait dataset we could employ.  To address this issue, we used a sequence of two training modules.
       </p>
-      <p>
-        In the first module, we trained a classifier network (a deep learning module that can classify the image of a face into one of the classes defined by the user, a class being the body of facial signifiers that comprise the portrait of a given individual) using an augmented dataset created by casting the style of our original portrait dataset onto an existing dataset.  We trained this classifier network using 20,000 images across 131 classes.
-      </p>
-      <image-inset image="/static/">
+      <image-inset image="/static/leo.jpg">
         Life mask casting of a known individual compared to a painted portrait of the same individual, Pope Leo X.
       </image-inset>
       <p>
+        In the first module, we trained a classifier network (a deep learning module that can classify the image of a face into one of the classes defined by the user, a class being the body of facial signifiers that comprise the portrait of a given individual) using an augmented dataset created by casting the style of our original portrait dataset onto an existing dataset.  We trained this classifier network using 20,000 images across 131 classes.
+      </p>
+      <p>
         In the second module, we utilized our original portrait dataset to train a Siamese network (a network that employs two Convolutional Neural Network models running in parallel with the parameters of the classifier we trained in first module) in order to learn (again, to teach the computer) the similarity between the pairs of images.  The reason for using the parameters from the classifier network is to have a better starting point for learning the images that were subject to artistic creativity.  Since the classifier is trained on a larger body of style transferred images, it captures the variation and style of the portrait. In this way, while training the Siamese Network, it better learns the features appropriate to distinguish the original portraits.
       </p>
-      <image-inset image="/static/">
+      <image-inset image="/static/richelieu.jpg">
         Sculptural portrait of a known individual compared to a painted portrait of the same individual, Cardinal Richelieu.
       </image-inset>
       <p>

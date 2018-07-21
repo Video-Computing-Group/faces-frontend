@@ -1,7 +1,7 @@
 <template>
     <figure class="img-right">
-        <img :src="image" alt="">
-        <figcaption class="caption">
+        <img :src="image" alt="" :style="{ top: useOffset }">
+        <figcaption class="caption" :style="{ top: useOffset }">
             <slot></slot>
         </figcaption>
     </figure>
@@ -9,8 +9,13 @@
 
 <script>
 export default {
-    props: ['image']
-}
+  props: ["image", "offset"],
+  computed: {
+    useOffset() {
+      return !this.offset ? "-150px" : "0px";
+    }
+  }
+};
 </script>
 
 <style scoped>
@@ -32,7 +37,7 @@ export default {
   padding-top: 10px;
   text-align: center !important;
   color: black !important;
-  font-family: 'Sorts Mill Goudy', serif !important;
+  font-family: "Sorts Mill Goudy", serif !important;
   font-size: 0.8em;
 }
 </style>

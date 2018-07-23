@@ -12,7 +12,7 @@
       <p>
         <strong>What FACES 2.0 might be used for</strong>
       </p>
-      <image-inset image="/static/14BattistaSforza.jpg" offset="false">
+      <image-inset image="/static/1bBrunelleschi.jpg" offset="false">
         Using FACES, it can be shown that this death mask of 1446 was used as a model for this bust of the late 16th century.
       </image-inset>
       <p>
@@ -28,12 +28,16 @@
         And FACES might be useful more broadly, for example to work out as much as possible the identities of particular bodies of miniature portraits of uncertain identity from the sixteenth century on, portraits that were often given as part of social and political networks and that might help recover lost networks at different levels of society, from the local to the national to the international.
       </p>
     </text-body>
-    <text-body-image image="/static/robertdeveraux.jpg">
+    <text-body-image image="/static/68aGalileoGalilei.jpg">
+      <template slot="caption">
+        FACES returned probable matches for what now appears to be the earliest known portrait of Galileo (left) and the three previously earliest known portraits of the famous astronomer.
+      </template>
+
       <h2>
         Future directions for those interested in developing new computer vision programs
       </h2>
 
-      <image-inset image="/static/14BattistaSforza.jpg">
+      <image-inset image="/static/16SmeraldaBrandini.jpg">
         Portraits of uncertain identity (by Botticelli and Verrocchio) believed by some to represent the same sitter, Smeralda Brandini.
       </image-inset>
 
@@ -45,7 +49,7 @@
         A program based on the analysis of proportions might even be applied to ornament of all kinds.  For example, such a program might be of enormous help in detecting certain minor variations in architectural detail--moldings or other components rendered in slightly different ways (not types) according to the particular practice of the individual mason--something that potentially might reveal a wealth of information about building processes, building history, and architectural identities.
       </p>
 
-      <image-inset image="/static/14BattistaSforza.jpg">
+      <image-inset image="/static/23aLorenzoDeMedici.jpg">
         Deaath mask casting of a known individual compared to a sculptural portrait and paintings of the same individual, Lorenzo de'Medici.
       </image-inset>
 
@@ -61,7 +65,7 @@
         And, since the style of an individual artist is able to be taught to computers, an application like this might be used to contribute to identifications of the artists of particular works of art--including works in which more than one artist participated.  Naturally, a program like this would have to be used with an understanding of all the potential pitfalls inherent in such an undertaking, especially with the first attempts.
       </p>
 
-      <image-inset image="/static/14BattistaSforza.jpg">
+      <image-inset image="/static/30d2Michelangelo.jpg">
         It has been suggested that the face of Nicodemus in Caravaggio's <em>Entombent of Christ</em> is a crypto-portrait of Michelangelo.
       </image-inset>
 

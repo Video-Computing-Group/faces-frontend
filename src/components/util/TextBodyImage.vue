@@ -13,26 +13,25 @@
 
 <script>
 export default {
-  props: ['color', 'image'],
+  props: ["color", "image"],
   computed: {
     getBackgroundColor() {
       let baseStyle = {
-        backgroundColor: 'white'
-      }
-      if (this.color === 'primary') {
-        baseStyle.backgroundColor = 'white'
-      }
-      else if (this.color === 'secondary') {
-        baseStyle.backgroundColor = '#d6d4ca'
+        backgroundColor: "white"
+      };
+      if (this.color === "primary") {
+        baseStyle.backgroundColor = "white";
+      } else if (this.color === "secondary") {
+        baseStyle.backgroundColor = "#d6d4ca";
       }
       return baseStyle;
     }
   }
-}
+};
 </script>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy');
+@import url("https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy");
 .text-body {
   background: white;
   padding-left: 20%;
@@ -68,7 +67,7 @@ export default {
   padding-top: 10px;
   text-align: center !important;
   color: black !important;
-  font-family: 'Sorts Mill Goudy', serif !important;
-  font-size: 0.8em;
+  font-family: "Sorts Mill Goudy", serif !important;
+  font-size: 9pt;
 }
 </style>

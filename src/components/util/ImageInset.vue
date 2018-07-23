@@ -38,6 +38,6 @@ export default {
   text-align: center !important;
   color: black !important;
   font-family: "Sorts Mill Goudy", serif !important;
-  font-size: 0.8em;
+  font-size: 8pt;
 }
 </style>

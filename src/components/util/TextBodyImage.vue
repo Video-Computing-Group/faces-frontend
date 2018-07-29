@@ -31,7 +31,6 @@ export default {
 </script>
 
 <style scoped>
-@import url("https://fonts.googleapis.com/css?family=Sorts+Mill+Goudy");
 .text-body {
   background: white;
   padding-left: 20%;

@@ -33,4 +33,7 @@ p {
   font-size: 1.2em;
   color: black;
 }
+h2 {
+  font-family: Century Gothic Bold, CenturyGothic, AppleGothic, sans-serif;
+}
 </style>

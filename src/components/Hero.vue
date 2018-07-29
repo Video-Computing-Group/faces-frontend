@@ -8,14 +8,12 @@
 </template>
 
 <script>
-export default {
-
-}
+export default {};
 </script>
 
 <style scoped>
 .hero {
-  font-family: 'GlacialIndifferenceBold', serif;
+  font-family: "GlacialIndifferenceBold", serif;
   min-height: 650px;
   width: 100%;
   background: url("/static/hero.jpg");
@@ -27,8 +25,13 @@ export default {
   flex-wrap: wrap;
   align-items: end;
 }
-.hero {
-  font-size: 3em;
+h1 {
+  font-size: 4em !important;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+}
+h3 {
+  font-size: 3em !important;
+  text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 .hero-child {
   width: 100%;
@@ -40,11 +43,10 @@ h3.hero-child {
   font-weight: 700 !important;
 }
 .hero-child-container {
-  background: rgba(0,0,0,.65);
+  background: rgba(0, 0, 0, 0.65);
   width: 100%;
   padding-top: 10px;
   padding-left: 10%;
-  padding-bottom: 70px;
+  padding-bottom: 15vh;
 }
-
 </style>

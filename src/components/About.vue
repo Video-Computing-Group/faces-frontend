@@ -2,7 +2,7 @@
   <div id="home">
     <hero />
     <text-body>
-      <h2>HISTORY OF FACES</h2>
+      <h2 id="history">HISTORY OF FACES</h2>
       <p>
         Before the nineteenth century, most portraits were, almost by definition, depictions of people who were important in their own worlds.  But, as a walk through almost any major art museum will show, a large number of these portraits from before the nineteenth century have lost the identities of their subjects through the fortunes of time.  Traditionally, identification of many of these portraits has been limited to often quite variable personal opinion.  Formed in 2011, the FACES project has undertaken the systematic application of face recognition technology to this highly subjective aspect of art history, establishing proof of concept, while at the same time retaining the human eye as the final arbiter.
       </p>
@@ -18,7 +18,7 @@
       <template slot="caption">
         Portraits of and associated with William Shakespeare, some with identity believed certain, others with identity uncertain.
       </template>
-      <h2>FACES 1.0</h2>
+      <h2 id="faces1">FACES 1.0</h2>
       <p>
         In the hope of addressing the challenges mentioned above, the FACES research team sought and received two grants from the National Endowment for the Humanities, grants whose two years (2012-2014) of support allowed us to establish proof of concept of our project.  Briefly put, what proof of concept meant was addressing four main areas: identifying the issues, establishing the basic methodology, applying the FACES algorithm that is the core of this methodology to a particular set of paradigms in order to establish the initial parameters of the technology, and finally applying the FACES algorithm to a body of chosen "identifications."  (We use the term "paradigm" here to mean a logically chosen body of related images directed toward a particular demonstrative end--small study groups of images.)
       </p>
@@ -49,7 +49,7 @@
       <template slot="caption">
         The portrait on the left received probably match scores with the two known portraits of James Scott on the right, supporting previous opinion that the first portrait represents Scott with his head put back in place after it had been chopped off after attempting to seize the throne from his uncle, James II.
       </template>
-      <h2>FACES 2.0</h2>
+      <h2 id="faces2">FACES 2.0</h2>
 
       <p>
         At the start of the project to automate FACES--FACES 2.0, funded by the Samuel H. Kress Foundation (2016-2018), a project that enabled us to make FACES available to the public--the decision was made to completely redesign the program.  The specific applications of feature extraction mentioned above were dropped entirely in favor of the wholly different method of machine learning known as deep neural networks.  The key issue in restoring lost identities to works of portrait art, however, remained the initial one: how to test one portrait against another, both of which were subject to the subjectivity of artistic interpretation--all of this being dependent, of course, upon the method, ability, and intentions of the individual artist.
@@ -85,7 +85,7 @@
         FACES supports the idea that Young Man Among Roses (the first image)--said to be "perhaps the most famous miniature ever painted"--represents Robert Devereux, a favorite of Queen Elizabeth I.
       </template>
 
-      <team />
+      <team id="team" />
 
     </text-body-image>
     
@@ -93,11 +93,11 @@
 </template>
 
 <script>
-import Hero from './Hero'
-import TextBody from './TextBody'
-import TextBodyImage from './util/TextBodyImageOffset'
-import ImageInset from './util/ImageInset'
-import Team from './util/Team'
+import Hero from "./Hero";
+import TextBody from "./TextBody";
+import TextBodyImage from "./util/TextBodyImageOffset";
+import ImageInset from "./util/ImageInset";
+import Team from "./util/Team";
 
 export default {
   components: {
@@ -129,7 +129,6 @@ body {
 }
 .text-body p {
   text-align: justify;
-  color: #626262;
 }
 .text-body h2 {
   padding-top: 50px;

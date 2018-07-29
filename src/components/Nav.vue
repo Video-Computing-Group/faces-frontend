@@ -26,19 +26,50 @@
               exact>Home</router-link>
           </li>
           <li class="nav-item">
-            <router-link 
-              :to="{ name: 'App' }" 
-              class="nav-link">Image Test</router-link>
+            <div class="btn-group">
+              <router-link type="button" class="btn" :to="{ name: 'App' }">
+                Image Test
+              </router-link>
+              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/app#overview">Overview</a>
+                <a class="dropdown-item" href="/app#levels">Testing Levels</a>
+                <a class="dropdown-item" href="/app#app">Application</a>
+                <a class="dropdown-item" href="/app#results">Interpretting Results</a>
+              </div>
+            </div>
           </li>
           <li class="nav-item">
-            <router-link 
-              :to="{ name: 'About' }" 
-              class="nav-link">History & Publications</router-link>
+            <div class="btn-group">
+              <router-link type="button" class="btn" :to="{ name: 'About' }">
+                History & Publications
+              </router-link>
+              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/about#history">History</a>
+                <a class="dropdown-item" href="/about#faces1">FACES 1.0</a>
+                <a class="dropdown-item" href="/about#faces2">FACES 2.0</a>
+                <a class="dropdown-item" href="/about#team">Team</a>
+              </div>
+            </div>
           </li>
           <li class="nav-item">
-            <router-link 
-              :to="{ name: 'Curators and Academics' }" 
-              class="nav-link">Curators & Academics</router-link>
+            <div class="btn-group">
+              <router-link type="button" class="btn" :to="{ name: 'Curators and Academics' }">
+                Curators & Academics
+              </router-link>
+              <button type="button" class="btn dropdown-toggle dropdown-toggle-split" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <span class="sr-only">Toggle Dropdown</span>
+              </button>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" href="/curatorsandacademics#what">What</a>
+                <a class="dropdown-item" href="/curatorsandacademics#future">Future Direction</a>
+              </div>
+            </div>
           </li>
         </ul>
       </div>
@@ -47,13 +78,14 @@
 </template>
 
 <style scoped>
-@import url('https://fonts.googleapis.com/css?family=Muli:400,700');
+@import url("https://fonts.googleapis.com/css?family=Muli:400,700");
 
 .navbar {
   padding-top: 50px;
   background: white;
   padding-bottom: 15px;
-  font-family: "Muli", "Century Gothic", "Apple Gothic", AppleGothic, "URW Gothic L", "Avant Garde", Futura, sans-serif;
+  font-family: "Muli", "Century Gothic", "Apple Gothic", AppleGothic,
+    "URW Gothic L", "Avant Garde", Futura, sans-serif;
 }
 a {
   color: #000;
@@ -70,5 +102,8 @@ a {
 }
 .container {
   max-width: 95%;
+}
+.dropdown-toggle {
+  background: white;
 }
 </style>

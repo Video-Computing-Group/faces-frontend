@@ -2,7 +2,7 @@
   <div id="home">
     <hero />
     <text-body>
-      <h2>
+      <h2 id="what">
         What FACES 2.0 might be used for for future directions for those interested in developing new computer vision programs
       </h2>
 
@@ -33,7 +33,7 @@
         FACES returned probable matches for what now appears to be the earliest known portrait of Galileo (left) and the three previously earliest known portraits of the famous astronomer.
       </template>
 
-      <h2>
+      <h2 id="future">
         Future directions for those interested in developing new computer vision programs
       </h2>
 

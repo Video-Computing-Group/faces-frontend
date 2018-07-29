@@ -2,17 +2,26 @@
   <div>
     <hero />
     <text-body>
-      <h2>Testing</h2>
+      <h2 id="overview">Testing</h2>
       <p>
-        FACES tests an image of unknown or uncertain identity against one or more images of known or provisional identity.  In this case, by "known identity," we mean an identity that is considered to be certain (for example, an image that can be proven to portray Mary Queen of Scots).  By "provisional identity" we mean a name that is provisionally attached to a particular portrait until that identity can be worked out with greater certainty (for example, an image that cannot be proven to portray the historical figure William Shakespeare but that is traditionally said to be of Shakespeare).  In this, FACES has the potential to match what is known with a given unknown--something that is unlikely to be accidental--and has the potential of providing previously unnoticeable or unconfirmable information by contributing categories of quantifiable data for researchers to factor into their own analyses.
+        FACES tests an image of unknown or uncertain identity against one or more images of known or provisional identity.  
+      </p>
+      <p>
+        In this case, by "known identity," we mean an identity that is considered to be certain (for example, an image that can be proven to portray Mary Queen of Scots).
+      </p>
+      <p>
+        By "provisional identity" we mean a name that is provisionally attached to a particular portrait until that identity can be worked out with greater certainty (for example, an image that cannot be proven to portray the historical figure William Shakespeare but that is traditionally said to be of Shakespeare).
+      </p>
+      <p>
+        In this, FACES has the potential to match what is known with a given unknown--something that is unlikely to be accidental--and has the potential of providing previously unnoticeable or unconfirmable information by contributing categories of quantifiable data for researchers to factor into their own analyses.
       </p>
     </text-body>
 
-    <text-body-image-r image="/static/bernini.jpg">
+    <text-body-image-r image="/static/bernini.jpg" color="secondary">
       <template slot="caption">
         Gian Lorenzo Bernini, by himself, at various stages of his life. 
       </template>
-      <h2>
+      <h2 id="levels">
         FACES 2.0 has two test levels
       </h2>
       <p>
@@ -48,14 +57,13 @@
     </text-body-image-r>
     
     <text-body-image-alt>
-
+      <h2 id="app">App</h2>
     </text-body-image-alt>
-
     <text-body-image-r image="/static/163CharlesIIEngland.jpg">
       <template slot="caption">
         Portraits of the same sitter, Charless II of England, by different artists.
       </template>
-      <h2>Interpretting Results</h2>
+      <h2 id="results">Interpretting Results</h2>
       <p>
         Once your images have been tested, you will receive a number on a scale from 0 to 100, analogous to a percentage: this is the similarity score.  Generally speaking, any score over 56 may be considered to have the probability--not the certainty--of a match.  Any score under 47 may be considered to have the probability--again, not the certainty--of a non-match.  And any score from 47 to 56 is statistically equivocal--it could indicate either a match or a non-match.
       </p>
@@ -164,12 +172,12 @@
 <script>
 import axios from "axios";
 import PictureInput from "vue-picture-input";
-import Hero from './Hero';
-import TextBody from './TextBody';
-import TextBodyImage from './TextBodyImage';
-import TextBodyImageAlt from './TextBodyImageAlt';
-import TextBodyImageR from './util/TextBodyImageOffset';
-import ImageInset from './util/ImageInset';
+import Hero from "./Hero";
+import TextBody from "./TextBody";
+import TextBodyImage from "./TextBodyImage";
+import TextBodyImageAlt from "./TextBodyImageAlt";
+import TextBodyImageR from "./util/TextBodyImageOffset";
+import ImageInset from "./util/ImageInset";
 
 export default {
   name: "App",

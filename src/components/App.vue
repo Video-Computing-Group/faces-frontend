@@ -56,8 +56,94 @@
       </p>
     </text-body-image-r>
     
-    <text-body-image-alt>
-      <h2 id="app">App</h2>
+    <text-body-image-alt id="app">
+      <div class="buttons" v-if="appState === 'init'">
+        <button>Sign In</button>
+        <button @click="appState = 'simple'">Simple Test</button>
+        <button>Advanced Test</button>
+      </div>
+      <div 
+        id="main" 
+        class="text-center"
+        v-if="appState === 'simple'"
+      >
+        <div class="row img-container">
+          <div class="img-upload row">
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+
+                  <picture-input 
+                    ref="testImage" 
+                    :custom-strings="{tap: 'Click here to upload a test image'}"
+                    :removable="true"
+                    width="300" 
+                    height="300" 
+                    margin="16" 
+                    accept="image/jpeg,image/png" 
+                    size="10"
+                    button-class="btn"
+                    @change="onChange"/>
+
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-6">
+              <div class="card">
+                <div class="card-body">
+                  
+                  <picture-input 
+                    ref="referenceImage" 
+                    :custom-strings="{tap: 'Click here to upload a reference image'}"
+                    :removable="true"
+                    width="300" 
+                    height="300" 
+                    margin="16" 
+                    accept="image/jpeg,image/png" 
+                    size="10"
+                    button-class="btn"
+                    @change="onChangeReference"/>
+                  
+                </div>
+              </div>
+            </div>
+
+            <div 
+              v-if="comparing" 
+              class="col-md-6 offset-md-3" >
+              <div class="card data">
+                <div
+                  v-for="(p, index) in predictions"
+                  :key="index"
+                  class="my-auto card-body text-center"
+                >
+                  <h1>{{ p.result.toFixed(2) }}%</h1>
+                  <p>{{ p.decision }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <button
+            v-if="!comparing"
+            type="button"
+            class="btn btn-primary btn-lg btn-block btn-action"
+            @click="compareImages"
+          >
+            Compare Images
+          </button>
+
+          <button
+            v-else
+            type="button"
+            class="btn btn-warning btn-lg btn-block btn-action"
+            @click="reset"
+          >
+            Compare New Images
+          </button>
+        </div>
+      </div>
     </text-body-image-alt>
     <text-body-image-r image="/static/163CharlesIIEngland.jpg">
       <template slot="caption">
@@ -86,86 +172,6 @@
         Since there was no pre-existing database of processed images of works of portrait art for us to develop our program, we had to make our own, something we did with as much control over variables as possible.  Practically speaking, this meant a database composed of portraits from a historical period marked by its attention to naturalistic representation in general and, in particular, by artists known for such attention.  We found that portraits from Western Europe, fifteenth to early eighteenth century, suited our purposes best, and FACES was configured for this type of portrait.  While a larger database would provide greater accuracy, statistical tests show that FACES 2.0 has a 92% accuracy rate.  At the current time, FACES is not designed for profiles, strongly angled portraits, or portraits from other periods or cultures.
       </p>
     </text-body-image-r>
-    <!-- <div 
-      id="main" 
-      class="text-center">
-      <div class="row img-container">
-        <div class="img-upload row">
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-body">
-
-                <picture-input 
-                  ref="testImage" 
-                  :custom-strings="{tap: 'Click here to upload a test image'}"
-                  :removable="true"
-                  width="300" 
-                  height="300" 
-                  margin="16" 
-                  accept="image/jpeg,image/png" 
-                  size="10"
-                  button-class="btn"
-                  @change="onChange"/>
-
-              </div>
-            </div>
-          </div>
-
-          <div class="col-md-6">
-            <div class="card">
-              <div class="card-body">
-                
-                <picture-input 
-                  ref="referenceImage" 
-                  :custom-strings="{tap: 'Click here to upload a reference image'}"
-                  :removable="true"
-                  width="300" 
-                  height="300" 
-                  margin="16" 
-                  accept="image/jpeg,image/png" 
-                  size="10"
-                  button-class="btn"
-                  @change="onChangeReference"/>
-                
-              </div>
-            </div>
-          </div>
-
-          <div 
-            v-if="comparing" 
-            class="col-md-6 offset-md-3" >
-            <div class="card data">
-              <div
-                v-for="(p, index) in predictions"
-                :key="index"
-                class="my-auto card-body text-center"
-              >
-                <h1>{{ p.result.toFixed(2) }}%</h1>
-                <p>{{ p.decision }}</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <button
-          v-if="!comparing"
-          type="button"
-          class="btn btn-primary btn-lg btn-block btn-action"
-          @click="compareImages"
-        >
-          Compare Images
-        </button>
-
-        <button
-          v-else
-          type="button"
-          class="btn btn-warning btn-lg btn-block btn-action"
-          @click="reset"
-        >
-          Compare New Images
-        </button>
-      </div>
-    </div> -->
   </div>
 </template>
 
@@ -198,7 +204,8 @@ export default {
       serverUrl: "http://zeus.johnpham.net:5000/api/compare",
       confidence: "",
       decision: "",
-      predictions: ""
+      predictions: "",
+      appState: "init"
     };
   },
   mounted: function() {
@@ -371,7 +378,7 @@ p {
   color: white;
 }
 .btn-action {
-  position: absolute;
+  /* position: absolute; */
   bottom: 0;
   padding: 30px;
   left: 5%;
@@ -379,7 +386,10 @@ p {
   background: none;
   border: 3px white solid;
   border-radius: 0;
-  margin-bottom: 20px;
+  margin-top: 50px;
+  /* margin-bottom: 20px; */
+  margin-left: auto;
+  margin-right: auto;
   color: white;
 }
 .btn-action:hover {
@@ -393,5 +403,23 @@ p {
 }
 .picture-inner-text {
   color: white;
+}
+#app {
+  padding-bottom: 300px;
+}
+
+button {
+  border: none;
+  padding: 20px 60px;
+  width: 50vw;
+  background: none;
+  border: 1px white solid;
+  margin-bottom: 10px;
+  color: white;
+  font-size: 40px;
+  text-transform: uppercase;
+  font-weight: 400;
+  font-family: "GlacialIndifferenceBold", serif;
+  z-index: 10;
 }
 </style>

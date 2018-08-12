@@ -2,7 +2,7 @@
     <div class="hero">
         <div class="hero-child-container">
         <h1 class="hero-child">FACES:</h1>
-        <h3 class="hero-child">Faces, Art, and Computerized Evaluation Systems</h3>
+        <h3 class="hero-child">Faces, Art, and Computerized Evaluation Systems Face recognition evaluation for works of portrait art</h3>
         </div>
     </div>
 </template>
@@ -14,7 +14,7 @@ export default {};
 <style scoped>
 .hero {
   font-family: "GlacialIndifferenceBold", serif;
-  min-height: 650px;
+  min-height: 90vh;
   width: 100%;
   background: url("/static/hero.jpg");
   background-repeat: no-repeat;
@@ -30,17 +30,19 @@ h1 {
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
 }
 h3 {
-  font-size: 3em !important;
   text-shadow: 0 3px 6px rgba(0, 0, 0, 0.16), 0 3px 6px rgba(0, 0, 0, 0.23);
+  opacity: 0.8;
 }
 .hero-child {
   width: 100%;
 }
 h1.hero-child {
   font-weight: 700 !important;
+  font-size: 60px;
 }
 h3.hero-child {
   font-weight: 700 !important;
+  font-size: 35px;
 }
 .hero-child-container {
   background: rgba(0, 0, 0, 0.65);

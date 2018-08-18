@@ -58,9 +58,9 @@
     
     <text-body-image-alt id="app">
       <div class="buttons" v-if="appState === 'init'">
-        <button>Sign In</button>
+        <!-- <button>Sign In</button> -->
         <button @click="appState = 'simple'">Simple Test</button>
-        <button>Advanced Test</button>
+        <!-- <button>Advanced Test</button> -->
       </div>
       <div 
         id="main" 
@@ -112,14 +112,15 @@
             <div 
               v-if="comparing" 
               class="col-md-6 offset-md-3" >
-              <div class="card data">
+              <div class="card data results">
+                <h1 class="match-rate" v-if="isLoading">Loading</h1>
                 <div
                   v-for="(p, index) in predictions"
                   :key="index"
-                  class="my-auto card-body text-center"
+                  class="my-auto text-center"
                 >
-                  <h1>{{ p.result.toFixed(2) }}%</h1>
-                  <p>{{ p.decision }}</p>
+                  <h1 class="match-rate">{{ p.result.toFixed(2) }}%</h1>
+                  <p class="decision">{{ p.decision }}</p>
                 </div>
               </div>
             </div>
@@ -201,11 +202,13 @@ export default {
       testImage: "",
       referenceImages: [],
       comparing: false,
-      serverUrl: "http://zeus.johnpham.net:5000/api/compare",
+      serverUrl: "http://169.235.21.62:5000/api/compare",
       confidence: "",
       decision: "",
       predictions: "",
-      appState: "init"
+      appState: "init",
+      result: '',
+      isLoading: false
     };
   },
   mounted: function() {
@@ -263,6 +266,7 @@ export default {
       );
     },
     compareImages() {
+      this.decision = '';
       if (!this.testImage || !this.referenceImages) {
         swal("Error", "You must upload 2 images", "error");
       } else {
@@ -272,6 +276,8 @@ export default {
         formData.append("image[0]", this.testImage);
         formData.append("image[1]", this.referenceImages);
 
+        this.isLoading = true
+        console.log(this.isLoading)
         axios
           .post(this.serverUrl, formData, {
             headers: {
@@ -281,6 +287,10 @@ export default {
           .then(res => {
             console.log(res.data);
             this.predictions = res.data;
+            this.isLoading = false
+          })
+          .catch(err => {
+            console.log(err)
           });
       }
     },
@@ -288,6 +298,8 @@ export default {
       this.comparing = false;
       this.$refs.testImage.removeImage();
       this.$refs.referenceImage.removeImage();
+      this.predictions = [];
+      this.decision = '';
     }
   }
 };
@@ -370,6 +382,7 @@ body {
 .card {
   background-color: #0003;
   border-radius: 0;
+  
 }
 h1 {
   color: white;
@@ -421,5 +434,17 @@ button {
   font-weight: 400;
   font-family: "GlacialIndifferenceBold", serif;
   z-index: 10;
+}
+
+.results {
+  margin-top: 50px;
+}
+.match-rate {
+  padding-top: 15px;
+}
+.decision {
+  position: initial !important;
+  text-align: center !important;
+  color: white !important;
 }
 </style>
